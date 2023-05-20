@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getNews } from "./api/news"
 import { Link } from 'react-router-dom';
-import logo from './Assets/logo.png'
+import './App.css'
 
 function App() {
   const [page, setPage] = useState(1);
@@ -23,14 +23,15 @@ function App() {
   }, [])
 
   return (
+  <>
     <div className="container text-center">
 
-      <h1 className='text-light bg-primary rounded-pill my-3 p-2'> <img className='rounded mx-5' src={logo} alt="logo" style={{height:'35px', width:'45px'}} /> CRYPTO TAB <img className='rounded mx-5' src={logo} alt="logo" style={{height:'35px', width:'45px'}} /> </h1>
-      <p className='fs-4 text-primary'>DAILY CRYPTO UPDATES AT ONE PLACE</p>
+      <h1 className='text-light bg-dark rounded-pill my-3 p-2 font'> CRYPTO TAB </h1>
+      <p className='fs-4 text-dark'>DAILY CRYPTO UPDATES AT ONE PLACE</p>
 
-      <div className="container shadow-lg p-3 mb-5 bg-body rounded">
+      <div className="container shadow-lg p-3 mb-5 bg-body rounded gradient">
         <div className="row">
-          {loading ? (<div className="spinner-border text-primary" role="status">
+          {loading ? (<div className="spinner-border text-light text-center" role="status">
           </div>)
             : (
               <>
@@ -38,7 +39,7 @@ function App() {
                   response.map(news => {
                     return (
                       <div className="col-md-4 my-3">
-                        <div className="card p-2 border-2 border-primary" style={{ height: "60vh" }}>
+                        <div className="card p-2 border-2 border-dark" style={{ height: "66vh" }}>
                           <img
                             src={news.related_image_big}
                             className="rounded border border-dark" style={{ height: "25vh" }} alt='img' />
@@ -51,10 +52,10 @@ function App() {
                                 : news.third_party_url
                             }
                           >
-                            <p className="mt-3 fs-4 fw-bold">
+                            <p className="mt-3 fs-4 fw-bold text-dark">
                               {news.HEADLINE}
                             </p>
-                            <p className="mt-4 text-center">
+                            <p className="mt-4 text-center text-dark">
                               {news.news_provider_name}
                             </p>
                           </Link>
@@ -82,6 +83,31 @@ function App() {
         </div>
       )}
     </div>
+  <footer className='row m-4'>
+    <div className='col-md-6'>
+    <h2 className='text-dark'>CRYPTO TAB</h2>
+    <div className='row'>© 2023 Crypto Tab</div>
+    </div>
+    <div className='col-md-6 text-dark'>
+          <h2>Developers</h2>
+            <div className='row'>
+            SK ELAF AHMED
+            </div>
+            <div className='row'>
+            SUBHADEEP LAYEK
+            </div>
+            <div className='row'>
+            RUPAK CHOWDHURY
+            </div>
+            <div className='row'>
+            DOLAN SARKAR
+            </div>
+            <div className='row'>
+            DRISAA DAS CHOUDHURY
+            </div>
+    </div>
+  </footer>
+  </>
   );
 }
 
